@@ -88,13 +88,13 @@
             renderer="logarithmicDepthBuffer: true;"
             loading-screen="enabled: false;"
             device-orientation-permission-ui="enabled: false"
-            mindar-image="imageTargetSrc: ./assets/images/image_target.mind; filterMinCF:0.0005; filterBeta: 1000"
             scene-environment="hdrImage:./assets/images/hdri.hdr; hdrExposure: 0.5;"
             vr-mode-ui="enabled: false"
             device-orientation-permission-ui="enabled: false"
             loading-screen="enabled: false"
             renderer="colorManagement: true;"
             webar-scene="key: 2b20c59f-5dd7-4820-92f6-8f10c5576f72"
+            shadow="type: pcfsoft"
         >
             <a-assets>
               <a-asset-item id="titanic-glb" src="./assets/models/titanic.glb"></a-asset-item>
@@ -118,20 +118,18 @@
             <a-camera webar-camera></a-camera>
 
             <a-entity webar-marker="id: cf622da8-681a-414b-a7d7-44aabb42c6c5">
-            </a-entity>
-            <a-entity id="debug_container" position="0 0.1 -1.7">
-              <a-entity id="container" position="0 -0.3 0" scale=".006 .006 .006">
-                
-                <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
-                <a-entity light="type: directional; color: #ffffff; intensity: 1; castShadow: true" position="1.5 70 2.4" target="#titanic"></a-entity>
+            <!-- </a-entity>
+            <a-entity id="debug_container" position="0 0.1 -1.7"> -->
+              <a-entity id="container" position="0 -0.3 0">
+              
 
-                <a-entity id="titanic-container" rot-loop="0">
-                  <a-entity id="titanic" gltf-model="#titanic-glb" position="0 -3.498 0" shadow="cast:true"></a-entity>
-                  <a-plane width="500" height="180" water visible="true" position="0 -2.06 0" rotation="-90 0 0"></a-plane>
+                <a-entity id="titanic-container" rot-loop="0" position="0 1.362 0" scale="0.8 0.8 0.8">
+                  <a-entity id="titanic" gltf-model="#titanic-glb" position="0 -2.105 0" shadow="cast:true;receive:true"></a-entity>
+                  <a-plane width="8" height="3" water visible="true" position="0 -2.093 0" rotation="-90 0 0"></a-plane>
                 </a-entity>
 
                 
-                <a-entity id="data-container">
+                <a-entity id="data-container" scale=".006 .006 .006">
                   <a-entity id="text-title" gltf-model="#text-title-glb" shadow="cast:false"></a-entity>
 
                   <a-entity id="text-technical01" gltf-model="#text-technical01-glb" class="text-technical" modelopacity="0" shadow="cast:false"></a-entity>
@@ -149,9 +147,12 @@
                   <a-entity id="text-tragedy02" gltf-model="#text-tragedy02-glb" class="text-tragedy" modelopacity="0" shadow="cast:false"></a-entity>
                   <a-entity id="text-tragedy03" gltf-model="#text-tragedy03-glb" class="text-tragedy" modelopacity="0" shadow="cast:false"></a-entity>
 
-                  <a-entity id="text-background" gltf-model="#text-background-glb" shadow="cast:false"></a-entity>
+                  <a-entity id="text-background" gltf-model="#text-background-glb" modelopacity="0" shadow="cast:false" ></a-entity>
 
                 </a-entity>
+
+                <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+                <a-entity light="type: point; color: #ffffff; intensity: 2; castShadow: true; shadowBias: -0.0001; shadowMapWidth:2048; shadowMapHeight:2048" position="-4.804 1.866 2.445"  ></a-entity>
 
               </a-entity>
 

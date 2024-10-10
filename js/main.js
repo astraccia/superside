@@ -60,6 +60,8 @@ const activateDataArea = async function(dataArea) {
 
   await Delay(1000);
 
+  document.querySelector('#text-background').setAttribute('animation',`property: modelopacity; from: 0; to: 1; dur: 1000;`);
+
   currentDataArea = dataArea;
 
   const textArray = document.querySelectorAll('.' + dataArea);
