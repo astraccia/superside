@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Adventures In Augmented Reality</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+    <link rel="stylesheet" type="text/css" href="styles.css" media="all" />
+
+    <script src="https://unpkg.com/aframe@1.4.2/dist/aframe-master.js"></script>
+    <script src="https://unpkg.com/aframe-extras@7.1.0/dist/aframe-extras.min.js"></script>
+
+    <script src="https://unpkg.com/three@0.147.0/examples/js/loaders/RGBELoader.js"></script>
+    <script src="https://unpkg.com/three@0.147.0/examples/js/objects/Water.js"></script>
+
+    <script src="https://webar-sdk.blippar.com/releases/2.0.5/webar-sdk-v2.0.5.min.js"
+      on-load=""
+      webar-mode="marker-tracking"
+      debug-mode="false"
+      auto-init="false"
+      auto-start="true"
+      static-camera="true"
+      enable-tracking-on-desktop="true"
+      show-qr-card-on-desktop="false"
+      ios-camera-permission="true"
+      enable-photo-ui="true"
+      logo-src="./assets/images/logo_full.png"
+      logo-width="180px"
+      logo-height="auto"
+
+      alert-border-color="#000000"
+      alert-border-width="2px"
+      alert-border-radius="21px"
+      alert-background-color="#FFFFFF"
+      alert-message-text-color="#000000"
+      alert-button-color="#000000"
+      alert-button-text-color="#FFFFFF"
+      alert-button-height="30px"
+      alert-button-border-radius="4vmin"
+      alert-camera-permission-text="We require access to your camera for this experience to work."
+      alert-motion-and-camera-permission-text="We require access to your camera and motion sensors for this experience to work."
+      alert-camera-permission-button-text="OK"
+      alert-box-width="250px"
+      alert-box-height="125px"
+      alert-box-font-size="17px"
+
+      show-guide-view="true"
+
+      auto-marker-detection="true"
+      auto-scan-instruction="Look for a marker to scan..."
+      auto-scan-instruction-detect="Detecting..."
+      auto-scan-instruction-idle="Move around to look for a marker"
+      auto-scan-instruction-idle-on-desktop="Reload to detect a marker"
+      auto-scan-instruction-text-style="color: orange"
+      auto-scan-style="display: none; position: absolute; top: 90%; left: 50%; transform: translate(-50%, -50%); z-index: 10000; width: auto; height: auto; text-align: center;"
+      auto-scan-style-display="block"
+      scan-btn-width="100"
+      scan-btn-height="100"
+      scan-btn-display="block"
+      scan-btn-instruction="Tap to scan"
+      scan-btn-instruction-style="color: white"
+      scan-btn-img-src="images/user_scan-btn-image_here.png"
+      scan-btn-img-width="50"
+      scan-btn-img-height="50"
+      scan-btn-img-x-coordinate="50%"
+      scan-btn-img-y-coordinate="50%"
+      scan-btn-img-transform="translate(-25, -25)"
+      scan-btn-progress-circle-cx-coordinate="50"
+      scan-btn-progress-circle-cy-coordinate="50"
+      scan-btn-progress-circle-radius="35"
+      scan-btn-progress-circle-style="fill: none; stroke: cyan; stroke-width: 6;"
+      scan-btn-progress-bar-cx-coordinate="50"
+      scan-btn-progress-bar-cy-coordinate="50"
+      scan-btn-progress-bar-radius="35"
+      scan-btn-progress-bar-transform="rotate(-90 50 50)"
+      scan-btn-progress-bar-color="blue"></script>
+
+    <script type="module" src="js/components.js"></script>
+    <script type="module" src="js/main.js"></script>
+
+    
+  </head>
+
+    <body style="touch-action: none">
+
+        <a-scene
+            renderer="logarithmicDepthBuffer: true;"
+            loading-screen="enabled: false;"
+            device-orientation-permission-ui="enabled: false"
+            mindar-image="imageTargetSrc: ./assets/images/image_target.mind; filterMinCF:0.0005; filterBeta: 1000"
+            scene-environment="hdrImage:./assets/images/hdri.hdr; hdrExposure: 0.5;"
+            vr-mode-ui="enabled: false"
+            device-orientation-permission-ui="enabled: false"
+            loading-screen="enabled: false"
+            renderer="colorManagement: true;"
+            webar-scene="key: 2b20c59f-5dd7-4820-92f6-8f10c5576f72"
+        >
+            <a-assets>
+              <a-asset-item id="titanic-glb" src="./assets/models/titanic.glb"></a-asset-item>
+
+              <a-asset-item id="text-title-glb" src="./assets/models/text_title.glb"></a-asset-item>
+              <a-asset-item id="text-background-glb" src="./assets/models/text_background.glb"></a-asset-item>
+              <a-asset-item id="text-historical01-glb" src="./assets/models/text_historical01.glb"></a-asset-item>
+              <a-asset-item id="text-historical02-glb" src="./assets/models/text_historical02.glb"></a-asset-item>
+              <a-asset-item id="text-historical03-glb" src="./assets/models/text_historical03.glb"></a-asset-item>
+              <a-asset-item id="text-technical01-glb" src="./assets/models/text_technical01.glb"></a-asset-item>
+              <a-asset-item id="text-technical02-glb" src="./assets/models/text_technical02.glb"></a-asset-item>
+              <a-asset-item id="text-technical03-glb" src="./assets/models/text_technical03.glb"></a-asset-item>
+              <a-asset-item id="text-technical04-glb" src="./assets/models/text_technical04.glb"></a-asset-item>
+              <a-asset-item id="text-technical05-glb" src="./assets/models/text_technical05.glb"></a-asset-item>
+              <a-asset-item id="text-technical06-glb" src="./assets/models/text_technical06.glb"></a-asset-item>
+              <a-asset-item id="text-tragedy01-glb" src="./assets/models/text_tragedy01.glb"></a-asset-item>
+              <a-asset-item id="text-tragedy02-glb" src="./assets/models/text_tragedy02.glb"></a-asset-item>
+              <a-asset-item id="text-tragedy03-glb" src="./assets/models/text_tragedy03.glb"></a-asset-item>
+            </a-assets>
+
+            <a-camera webar-camera></a-camera>
+
+            <a-entity webar-marker="id: cf622da8-681a-414b-a7d7-44aabb42c6c5">
+            </a-entity>
+            <a-entity id="debug_container" position="0 0.1 -1.7">
+              <a-entity id="container" position="0 -0.3 0" scale=".006 .006 .006">
+                
+                <a-entity light="type: ambient; intensity: 0.5;"></a-entity>
+                <a-entity light="type: directional; color: #ffffff; intensity: 1; castShadow: true" position="1.5 70 2.4" target="#titanic"></a-entity>
+
+                <a-entity id="titanic-container" rot-loop="0">
+                  <a-entity id="titanic" gltf-model="#titanic-glb" position="0 -3.498 0" shadow="cast:true"></a-entity>
+                  <a-plane width="500" height="180" water visible="true" position="0 -2.06 0" rotation="-90 0 0"></a-plane>
+                </a-entity>
+
+                
+                <a-entity id="data-container">
+                  <a-entity id="text-title" gltf-model="#text-title-glb" shadow="cast:false"></a-entity>
+
+                  <a-entity id="text-technical01" gltf-model="#text-technical01-glb" class="text-technical" modelopacity="0" shadow="cast:false"></a-entity>
+                  <a-entity id="text-technical02" gltf-model="#text-technical02-glb" class="text-technical" modelopacity="0" shadow="cast:false"></a-entity>
+                  <a-entity id="text-technical03" gltf-model="#text-technical03-glb" class="text-technical" modelopacity="0" shadow="cast:false"></a-entity>
+                  <a-entity id="text-technical04" gltf-model="#text-technical04-glb" class="text-technical" modelopacity="0" shadow="cast:false"></a-entity>
+                  <a-entity id="text-technical05" gltf-model="#text-technical05-glb" class="text-technical" modelopacity="0" shadow="cast:false"></a-entity>
+                  <a-entity id="text-technical06" gltf-model="#text-technical06-glb" class="text-technical" modelopacity="0" shadow="cast:false"></a-entity>
+
+                  <a-entity id="text-historical01" gltf-model="#text-historical01-glb" class="text-historical" modelopacity="0" shadow="cast:false"></a-entity>
+                  <a-entity id="text-historical02" gltf-model="#text-historical02-glb" class="text-historical" modelopacity="0" shadow="cast:false"></a-entity>
+                  <a-entity id="text-historical03" gltf-model="#text-historical03-glb" class="text-historical" modelopacity="0" shadow="cast:false"></a-entity>
+
+                  <a-entity id="text-tragedy01" gltf-model="#text-tragedy01-glb" class="text-tragedy" modelopacity="0" shadow="cast:false"></a-entity>
+                  <a-entity id="text-tragedy02" gltf-model="#text-tragedy02-glb" class="text-tragedy" modelopacity="0" shadow="cast:false"></a-entity>
+                  <a-entity id="text-tragedy03" gltf-model="#text-tragedy03-glb" class="text-tragedy" modelopacity="0" shadow="cast:false"></a-entity>
+
+                  <a-entity id="text-background" gltf-model="#text-background-glb" shadow="cast:false"></a-entity>
+
+                </a-entity>
+
+              </a-entity>
+
+            </a-entity>
+
+
+        </a-scene>
+
+        <div id="ui" class="fade">
+          <div class="menu up">
+            <a id="btn_camera"><img src="./assets/images/btn_camera.png"/></a>
+            <div><img src="./assets/images/logo.png"/></div>
+            <a id="btn_360"><img src="./assets/images/btn_360.png"/></a>
+          </div>
+          
+          <div class="menu down">
+            <a id="btn_technical" class="btn">Technical Data</a>
+            <a id="btn_historical" class="btn">Historical Data</a>
+            <a id="btn_tragedy" class="btn">The Tragedy</a>
+          </div>
+        </div>
+
+        <script>
+          WEBARSDK.Init();
+
+          WEBARSDK.SetAppReadyCallback(() =>{
+            document.querySelector('#ui').classList.add('show');
+          });
+    
+          WEBARSDK.SetMarkerDetectedCallback((markerId) => {
+              console.info('Marker is detected for marker id: ', markerId);
+          });
+    
+          // Give a callback when the WebAR Marker <a-entity webar-marker> is lost
+          WEBARSDK.SetMarkerLostCallback((markerId) => {
+            console.info('Marker tracking is lost for marker id: ', markerId);
+          });
+    
+          
+        </script>
+
+        <script src="./js/touch.js"></script>
+    </body>
+</html>
